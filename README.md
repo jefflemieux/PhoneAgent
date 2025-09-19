@@ -72,7 +72,7 @@ POST /call_custom
 {
   "phone_number": "+33612345678",
   "email": "destinataire@email.com",
-  "system_message": "Bienvenue sur notre service IA !",
+  "system_message": "Vous êtes un agent téléphonique qui doit répondre aux questions qu'on vous pose. Ayez un ton positif et soyez courtois.",
   "voice": "alloy"
 }
 ```
