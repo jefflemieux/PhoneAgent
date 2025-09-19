@@ -65,6 +65,38 @@ Utilisez un fichier `.env` pour stocker ces variables.
 uvicorn custom-phone-agent:app --reload
 ```
 
+## Description du endpoint API
+
+### POST `/call_custom`
+
+Déclenche un appel téléphonique automatisé avec un agent IA, puis envoie un résumé de la conversation par email à la fin de l'appel.
+
+**Corps de la requête (JSON) :**
+
+| Champ          | Type   | Description                                                                  |
+| -------------- | ------ | ---------------------------------------------------------------------------- |
+| phone_number   | string | Numéro de téléphone du destinataire (format international, ex: +33612345678) |
+| email          | string | Adresse email pour recevoir le résumé                                        |
+| system_message | string | Message système pour personnaliser le comportement de l'agent                |
+| voice          | string | Voix IA à utiliser (ex: "alloy"). Voir ci-dessous pour la liste des voix.    |
+
+**Liste des voix OpenAI**
+
+Pour le paramètre `voice`, vous pouvez utiliser l'une des voix proposées par OpenAI (par exemple : `alloy`, `echo`, `fable`, `onyx`, `nova`, `shimmer`).
+
+La liste complète et à jour des voix est disponible dans la documentation officielle : [OpenAI Text-to-Speech API Voices](https://platform.openai.com/docs/guides/text-to-speech/voice-options)
+
+**Réponse (JSON) :**
+
+```
+{
+  "message": "Call initiated to +33612345678",
+  "session_id": "..."
+}
+```
+
+---
+
 ## Exemple d'appel API
 
 ```json
